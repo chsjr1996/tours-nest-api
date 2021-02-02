@@ -1,18 +1,21 @@
 import { Controller, Delete, Get, Param, Post, Put, Res } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
+import { TourService } from 'src/services/tour/tour.service';
 
 @ApiTags('tour')
 @Controller('v1/tour')
 export class TourController {
+  constructor(private tourService: TourService) {}
+
   @Post()
   public async store(@Res() res: Response) {
     return res.json({ message: 'Not implemented yet' });
   }
 
   @Get()
-  public async index(@Res() res: Response) {
-    return res.json({ message: 'Not implemented yet' });
+  public async index() {
+    return this.tourService.getAll();
   }
 
   @Get(':id')

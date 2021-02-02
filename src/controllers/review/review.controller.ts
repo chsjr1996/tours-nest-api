@@ -1,6 +1,8 @@
 import { Controller, Delete, Get, Param, Post, Put, Res } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
 
+@ApiTags('review')
 @Controller('v1/review')
 export class ReviewController {
   @Post()

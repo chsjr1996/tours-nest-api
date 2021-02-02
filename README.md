@@ -33,7 +33,7 @@ This repository is based on udemy course [Node.js, Express, MongoDB & More: The 
 
 If you have docker and docker-compose, you can use this command:
 
-- `docker-compose -f docker-compose.yaml up -d`
+- `docker-compose up -d`
 
 ---
 

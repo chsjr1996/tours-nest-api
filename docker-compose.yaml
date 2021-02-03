@@ -12,6 +12,7 @@ services:
 
   db:
     build: .docker/postgres
+    container_name: natours-nest-db
     restart: always
     tty: true
     volumes:
@@ -22,6 +23,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
+    container_name: natours-nest-pgadmin
     tty: true
     environment:
       - PGADMIN_DEFAULT_EMAIL=admin@natours.com

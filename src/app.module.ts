@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
+import { AuthController } from './controllers/auth/auth.controller';
 import { ReviewController } from './controllers/review/review.controller';
 import { TourController } from './controllers/tour/tour.controller';
 import { UserController } from './controllers/user/user.controller';
-import { AuthController } from './controllers/auth/auth.controller';
-import { UserService } from './services/user/user.service';
-import { TourService } from './services/tour/tour.service';
 import { ReviewService } from './services/review/review.service';
+import { TourService } from './services/tour/tour.service';
+import { UserService } from './services/user/user.service';
 
 @Module({
   imports: [],
@@ -15,6 +15,6 @@ import { ReviewService } from './services/review/review.service';
     UserController,
     AuthController,
   ],
-  providers: [UserService, TourService, ReviewService],
+  providers: [ReviewService, TourService, UserService],
 })
 export class AppModule {}

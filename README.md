@@ -1,3 +1,5 @@
+![Travis Build Status](https://travis-ci.com/chsjr1996/natours-nest-api.svg?branch=main) ![License MIT](https://img.shields.io/github/license/chsjr1996/natours-nest-api)
+
 # Natours
 
 This repository is based on udemy course [Node.js, Express, MongoDB & More: The Complete Bootcamp 2020](https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/) but in typescript version using Nest.JS

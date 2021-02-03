@@ -1,7 +1,7 @@
+import { Response } from 'express';
 import { Controller, Delete, Get, Param, Post, Put, Res } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { Response } from 'express';
-import { TourService } from '../../services/tour/tour.service';
+import { TourService } from 'src/services/tour/tour.service';
 
 @ApiTags('tour')
 @Controller('v1/tour')

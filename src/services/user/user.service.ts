@@ -10,11 +10,11 @@ export class UserService {
     private userRepository: Repository<User>,
   ) {}
 
-  getById(id: string): Promise<User> {
+  async getById(id: string): Promise<User> {
     return this.userRepository.findOne({ id: parseInt(id) });
   }
 
-  getAll(): Promise<User[]> {
+  async getAll(): Promise<User[]> {
     return this.userRepository.find();
   }
 }

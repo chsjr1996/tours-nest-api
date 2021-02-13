@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/chsjr1996/natours-nest-api.svg?branch=main)](https://travis-ci.com/chsjr1996/natours-nest-api) ![License MIT](https://img.shields.io/github/license/chsjr1996/natours-nest-api)
+[![Build Status](https://travis-ci.com/chsjr1996/natours-nest-api.svg?branch=main)](https://travis-ci.com/chsjr1996/natours-nest-api) ![License MIT](https://img.shields.io/github/license/chsjr1996/natours-nest-api) ![Doc](https://img.shields.io/badge/doc-swagger-%230E7FBF)
 
 # Natours
 

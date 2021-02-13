@@ -6,8 +6,11 @@ import { Response } from 'express';
 export default class EntityNotFoundExceptionFilter implements ExceptionFilter {
   catch(exception: EntityNotFoundError, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
-    const { Error } = ctx.getResponse<Response>();
+    const res = ctx.getResponse<Response>();
 
-    return Error('Not Found', exception.message, 404);
+    return res.status(404).json({
+      userMsg: 'Not Found',
+      devMesg: exception.message,
+    });
   }
 }

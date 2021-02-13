@@ -3,14 +3,10 @@ import { AppModule } from './app.module';
 import swaggerSetup from './doc/swaggerSetup';
 import GlobalExceptionFilter from './exception-filters/global.exception-filter';
 import EntityNotFoundExceptionFilter from './exception-filters/entity-not-found.exception-filter';
-import responsesMiddleware from './middlewares/responses/responses.middleware';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
-
-  // Middlewares
-  app.use(responsesMiddleware);
 
   // Filters
   app.useGlobalFilters(

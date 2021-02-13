@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/chsjr1996/natours-nest-api.svg?branch=main)](https://travis-ci.com/chsjr1996/natours-nest-api) ![License MIT](https://img.shields.io/github/license/chsjr1996/natours-nest-api) ![Doc](https://img.shields.io/badge/doc-swagger-%230E7FBF)
+[![Build Status](https://travis-ci.com/chsjr1996/natours-nest-api.svg?branch=main)](https://travis-ci.com/chsjr1996/natours-nest-api) [![Coverage Status](https://coveralls.io/repos/github/chsjr1996/natours-nest-api/badge.svg?branch=main)](https://coveralls.io/github/chsjr1996/natours-nest-api?branch=main) ![Doc](https://img.shields.io/badge/doc-swagger-%230E7FBF) ![License MIT](https://img.shields.io/github/license/chsjr1996/natours-nest-api)
 
 # Natours
 
@@ -17,6 +17,7 @@ A tour Rest API.
 - [ ] Redis cache layer
 - [ ] Web Socket
 - [ ] GraphQL
+- [ ] Get 100% code coverage
 
 ...
 

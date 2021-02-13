@@ -2,7 +2,7 @@ version: '3'
 
 services:
   app:
-    build: .
+    build: ./.docker/app
     entrypoint: ./.docker/entrypoint-dev.sh
     container_name: natours-nest-api
     ports:

@@ -1,11 +1,11 @@
 import { Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { ReviewService } from 'src/services/review/review.service';
+import { TourService } from './tour.service';
 
-@ApiTags('review')
-@Controller('v1/review')
-export class ReviewController {
-  constructor(private reviewService: ReviewService) {}
+@ApiTags('tour')
+@Controller('v1/tour')
+export class TourController {
+  constructor(private tourService: TourService) {}
 
   @Post()
   public async store() {
@@ -14,7 +14,7 @@ export class ReviewController {
 
   @Get()
   public async index() {
-    return this.reviewService.getAll();
+    return this.tourService.getAll();
   }
 
   @Get(':id')

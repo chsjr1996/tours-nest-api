@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TourController } from './tour.controller';
-import { TourService } from 'src/services/tour/tour.service';
+import { TourService } from './tour.service';
 
 describe('TourController', () => {
   let controller: TourController;

@@ -2,7 +2,7 @@
 
 # Natours
 
-This repository is based on udemy course [Node.js, Express, MongoDB & More: The Complete Bootcamp 2020](https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/) but in typescript version using Nest.JS
+A tour Rest API.
 
 ---
 
@@ -60,6 +60,21 @@ If you have docker and docker-compose, you can use this command:
 If you are using the production file (docker-compose.prod.yaml) then you need specify this after of `docker-compose`, e.g.:
 
 - `docker-compose -f docker-compose.prod.yaml down`
+
+---
+
+### References
+
+This repository is based on some articles and videos. I used them as study object, then here has some differences because I merged several concepts and did some adjusts.
+
+- [Node.js, Express, MongoDB & More: The Complete Bootcamp 2020](https://www.udemy.com/course/nodejs-express-mongodb-bootcamp) `(1)`
+- [Nest.js: desenvolvimento de APIs, by: Full Cycle](https://www.youtube.com/watch?v=BT7novtdAgI&t=6650s)
+- [Agilidade brutal no backend com Nest.js, by: Full Cycle](https://www.youtube.com/watch?v=qE0jRojtx08)
+- [Best Way to Structure Your Directory/Code (NestJS), by: Prateek Kathal](https://medium.com/the-crowdlinker-chronicle/best-way-to-structure-your-directory-code-nestjs-a06c7a641401)
+
+> Notes
+
+1. This repository is based on udemy course [Node.js, Express, MongoDB & More: The Complete Bootcamp 2020](https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/), originally built with vanilla Javascript and MongoDB.
 
 ---
 

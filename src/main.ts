@@ -1,8 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import swaggerSetup from './doc/swaggerSetup';
-import GlobalExceptionFilter from './exception-filters/global.exception-filter';
-import EntityNotFoundExceptionFilter from './exception-filters/entity-not-found.exception-filter';
+import swaggerSetup from './swagger.setup';
+import GlobalExceptionFilter from './common/exception-filters/global.exception-filter';
+import EntityNotFoundExceptionFilter from './common/exception-filters/entity-not-found.exception-filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

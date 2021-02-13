@@ -11,9 +11,11 @@ This repository is based on udemy course [Node.js, Express, MongoDB & More: The 
 - [x] Docker environments (production and development)
 - [x] Swagger Docs
 - [x] Use Routing Controllers and Typescript!
-- [ ] Write tests and use some CI tool
+- [x] Write tests and use some CI tool
 - [ ] Manage users, tours, reviews and bookings
 - [ ] Queues
+- [ ] Redis cache layer
+- [ ] Web Socket
 - [ ] GraphQL
 
 ...

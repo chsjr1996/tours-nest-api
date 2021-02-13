@@ -11,7 +11,7 @@ export class UserService {
   ) {}
 
   async getById(id: string): Promise<User> {
-    return this.userRepository.findOne({ id: parseInt(id) });
+    return this.userRepository.findOneOrFail({ id: parseInt(id) });
   }
 
   async getAll(): Promise<User[]> {

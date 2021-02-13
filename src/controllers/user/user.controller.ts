@@ -1,4 +1,3 @@
-import { Response } from 'express';
 import {
   Controller,
   Delete,
@@ -7,7 +6,6 @@ import {
   Param,
   Post,
   Put,
-  Res,
 } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { UserService } from 'src/services/user/user.service';
@@ -20,30 +18,30 @@ export class UserController {
   constructor(private userService: UserService) {}
 
   @Post()
-  public store(@Res() res: Response) {
-    return res.json({ message: 'Not implemented yet' });
+  public store() {
+    throw new Error('Not implemented yet');
   }
 
   @Get()
   @ApiOkResponse({ type: UserResponse, isArray: true })
-  public index(): Promise<User[]> {
+  public async index(): Promise<User[]> {
     return this.userService.getAll();
   }
 
   @Get(':id')
   @ApiOkResponse({ type: UserResponse })
-  public show(@Param('id') id: string): Promise<User> {
+  public async show(@Param('id') id: string): Promise<User> {
     return this.userService.getById(id);
   }
 
   @Put(':id')
-  public update(@Param('id') id: string, @Res() res: Response) {
-    return res.json({ message: 'Not implemented yet' });
+  public update(@Param('id') id: string) {
+    throw new Error('Not implemented yet');
   }
 
   @Delete(':id')
   @HttpCode(204)
-  public delete(@Param('id') id: string, @Res() res: Response) {
-    return res.json({ message: 'Not implemented yet' });
+  public delete(@Param('id') id: string) {
+    throw new Error('Not implemented yet');
   }
 }

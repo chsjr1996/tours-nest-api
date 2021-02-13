@@ -5,7 +5,6 @@ import { UserFactory } from 'src/factories/user.factory';
 
 describe('UserController', () => {
   let controller: UserController;
-  // let service: UserService;
 
   const mockUsers = [new UserFactory().make(), new UserFactory().make()];
 
@@ -28,7 +27,6 @@ describe('UserController', () => {
     }).compile();
 
     controller = module.get<UserController>(UserController);
-    // service = module.get<UserService>(UserService);
   });
 
   it('should be defined', () => {

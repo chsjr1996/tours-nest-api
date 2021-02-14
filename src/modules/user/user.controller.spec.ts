@@ -6,7 +6,7 @@ import { UserFactory } from 'src/database/factories/user.factory';
 describe('UserController', () => {
   let controller: UserController;
 
-  const mockUsers = [new UserFactory().make(), new UserFactory().make()];
+  const mockUsers = [new UserFactory().make(1), new UserFactory().make(2)];
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({

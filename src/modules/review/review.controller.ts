@@ -13,13 +13,13 @@ export class ReviewController {
   }
 
   @Get()
-  public async index() {
+  public async index(): Promise<any[]> {
     return this.reviewService.getAll();
   }
 
   @Get(':id')
-  public async show(@Param('id') id: string) {
-    throw new Error('Not implemented yet');
+  public async show(@Param('id') id: string): Promise<any> {
+    return this.reviewService.getById(id);
   }
 
   @Put(':id')

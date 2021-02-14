@@ -2,6 +2,7 @@
 
 ---
 
+![Natours Logo](./natours-logo.png)
 ![Repository Banner](./repo-banner.png)
 
 # Natours NestJS API
@@ -95,6 +96,8 @@ This repository is based on some articles and videos. I used them as study objec
 > Notes
 
 1. This repository is based on udemy course [Node.js, Express, MongoDB & More: The Complete Bootcamp 2020](https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/), originally built with vanilla Javascript and MongoDB.
+
+**Natours Logo by [Jonas Schmedtmann](https://github.com/jonasschmedtmann)**
 
 ---
 

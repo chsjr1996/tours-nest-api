@@ -7,7 +7,9 @@
 
 # Natours NestJS API
 
-A tour Rest API.
+A tour API built with NestJS and using some good development practices like: automated tests with coverage follow up and CI tool, docker automated builds and Swagger Documentation.
+
+More is coming...
 
 ---
 
@@ -97,7 +99,8 @@ This repository is based on some articles and videos. I used them as study objec
 
 1. This repository is based on udemy course [Node.js, Express, MongoDB & More: The Complete Bootcamp 2020](https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/), originally built with vanilla Javascript and MongoDB.
 
-**Natours Logo by [Jonas Schmedtmann](https://github.com/jonasschmedtmann)**
+
+**Natours Logo by [Jonas Schmedtmann](https://github.com/jonasschmedtmann)**.
 
 ---
 

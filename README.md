@@ -1,6 +1,10 @@
-[![Build Status](https://travis-ci.com/chsjr1996/natours-nest-api.svg?branch=main)](https://travis-ci.com/chsjr1996/natours-nest-api) [![Coverage Status](https://coveralls.io/repos/github/chsjr1996/natours-nest-api/badge.svg?branch=main)](https://coveralls.io/github/chsjr1996/natours-nest-api?branch=main) ![Doc](https://img.shields.io/badge/doc-swagger-%230E7FBF) ![License MIT](https://img.shields.io/github/license/chsjr1996/natours-nest-api)
+[![Build Status](https://travis-ci.com/chsjr1996/natours-nest-api.svg?branch=main)](https://travis-ci.com/chsjr1996/natours-nest-api) [![Coverage Status](https://coveralls.io/repos/github/chsjr1996/natours-nest-api/badge.svg?branch=main)](https://coveralls.io/github/chsjr1996/natours-nest-api?branch=main) ![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/sourcevortex/natours-nest-api) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/sourcevortex/natours-nest-api) ![Doc](https://img.shields.io/badge/doc-swagger-%230E7FBF) ![License MIT](https://img.shields.io/github/license/chsjr1996/natours-nest-api)
 
-# Natours
+---
+
+![Repository Banner](./repo-banner.png)
+
+# Natours NestJS API
 
 A tour Rest API.
 
@@ -26,7 +30,12 @@ A tour Rest API.
 ## Requirements
 
 - NodeJS
-- Docker (optional)
+- Some DBMS (default in .env.example is PostgreSQL)
+
+or
+
+- Docker
+- docker-compose
 
 ---
 
@@ -49,6 +58,16 @@ If you have docker and docker-compose, you can use this command:
 - Modify app > entrypoint and use `./.docker/entrypoint-prod.sh` file
 - **(IMPORTANT)** Modify passwords, ports, and others sensitives envs
 - Run with `docker-compose -f docker-compose.prod.yaml up -d `
+
+You can use docker hub image too:
+
+- `docker pull sourcevortex/natours-nest-api`
+
+In this case you need to have a running DBMS and adjust the **.env** file.
+
+**See more in:**
+
+- https://hub.docker.com/r/sourcevortex/natours-nest-api
 
 ---
 

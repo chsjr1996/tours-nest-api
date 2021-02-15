@@ -1,20 +1,15 @@
 import { NestFactory } from '@nestjs/core';
+import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
 import swaggerSetup from './swagger.setup';
-import GlobalExceptionFilter from './common/exception-filters/global.exception-filter';
-import EntityNotFoundExceptionFilter from './common/exception-filters/entity-not-found.exception-filter';
+import Filters from './common/exception-filters';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
+  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalFilters(...Filters);
 
-  // Filters
-  app.useGlobalFilters(
-    new GlobalExceptionFilter(),
-    new EntityNotFoundExceptionFilter(),
-  );
-
-  // Misc
   swaggerSetup(app);
 
   await app.listen(process.env.PORT || 3000);

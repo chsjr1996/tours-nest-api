@@ -14,6 +14,7 @@ export default (app: INestApplication) => {
     .addTag('review', 'Review resource with data related with tours')
     .addTag('tour', 'Tour resource with main API data')
     .addTag('user', 'User resource with common and admins users')
+    .addServer('http://localhost:3000', 'Development')
     .build();
 
   const document = SwaggerModule.createDocument(app, options);

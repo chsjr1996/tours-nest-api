@@ -7,6 +7,13 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
+export enum Role {
+  User = 'user',
+  Guide = 'guide',
+  LeadGuide = 'lead-guide',
+  Admin = 'admin',
+}
+
 @Entity({ name: 'users' })
 export class User {
   @PrimaryGeneratedColumn()
@@ -67,9 +74,9 @@ export class User {
     this.photo = photo || '';
     this.role = role || '';
     this.password = password || '';
-    this.password_changed_at = password_changed_at || new Date();
+    this.password_changed_at = password_changed_at;
     this.password_reset_token = password_reset_token || '';
-    this.deleted_at = deleted_at || new Date();
+    this.deleted_at = deleted_at;
     this.is_active = is_active || true;
   }
 }

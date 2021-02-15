@@ -29,6 +29,8 @@
     "@nestjs/platform-express": "^7.5.1",
     "@nestjs/swagger": "^4.7.12",
     "@nestjs/typeorm": "^7.1.5",
+    "class-transformer": "^0.3.2",
+    "class-validator": "^0.13.1",
     "faker": "^5.3.1",
     "lodash": "^4.17.20",
     "pg": "^8.5.1",

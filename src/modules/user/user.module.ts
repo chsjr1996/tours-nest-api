@@ -10,3 +10,7 @@ import { UserService } from './user.service';
   providers: [UserService],
 })
 export class UserModule {}
+
+// TODO:
+// - Protect password with hash bcrypt
+// - Improve put method to allow update registers parts

@@ -17,7 +17,7 @@ export class UserService {
   }
 
   async getById(id: string): Promise<User> {
-    return this.userRepository.findOneOrFail({ id: parseInt(id) });
+    return this.userRepository.findOneOrFail({ id });
   }
 
   async getAll(): Promise<User[]> {
@@ -25,12 +25,12 @@ export class UserService {
   }
 
   async update(id: string, modifiedUser: UpdateUserDTO): Promise<User> {
-    const user = await this.userRepository.findOneOrFail(id);
+    const user = await this.userRepository.findOneOrFail({ id });
     return this.userRepository.save({ ...user, ...modifiedUser });
   }
 
   async softDelete(id: string): Promise<void> {
-    await this.userRepository.softDelete({ id: Number(id) });
+    await this.userRepository.softDelete({ id });
     return Promise.resolve();
   }
 }

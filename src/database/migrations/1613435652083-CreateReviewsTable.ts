@@ -1,10 +1,15 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import {
+  MigrationInterface,
+  QueryRunner,
+  Table,
+  TableForeignKey,
+} from 'typeorm';
 
-export class CreateUsersTable1612318810653 implements MigrationInterface {
+export class CreateReviewsTable1613435652083 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'users',
+        name: 'reviews',
         columns: [
           {
             name: 'id',
@@ -24,41 +29,19 @@ export class CreateUsersTable1612318810653 implements MigrationInterface {
             default: 'CURRENT_TIMESTAMP',
           },
           {
-            name: 'name',
-            type: 'varchar',
+            name: 'user_id',
+            type: 'uuid',
             isNullable: false,
           },
           {
-            name: 'email',
-            type: 'varchar',
-            isNullable: false,
-            isUnique: true,
-          },
-          {
-            name: 'photo',
-            type: 'varchar',
-            isNullable: true,
-          },
-          {
-            name: 'role',
-            type: 'varchar',
-            enum: ['user', 'guide', 'lead-guide', 'admin'],
-            default: 'user',
-          },
-          {
-            name: 'password',
-            type: 'varchar',
+            name: 'tour_id',
+            type: 'uuid',
             isNullable: false,
           },
           {
-            name: 'password_changed_at',
-            type: 'timestamp',
-            isNullable: true,
-          },
-          {
-            name: 'password_reset_token',
+            name: 'review',
             type: 'varchar',
-            isNullable: true,
+            isNullable: false,
           },
           {
             name: 'deleted_at',
@@ -73,9 +56,30 @@ export class CreateUsersTable1612318810653 implements MigrationInterface {
         ],
       }),
     );
+
+    await queryRunner.createForeignKeys('reviews', [
+      new TableForeignKey({
+        columnNames: ['user_id'],
+        referencedTableName: 'users',
+        referencedColumnNames: ['id'],
+      }),
+      new TableForeignKey({
+        columnNames: ['tour_id'],
+        referencedTableName: 'tours',
+        referencedColumnNames: ['id'],
+      }),
+    ]);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('users');
+    const table = await queryRunner.getTable('reviews');
+    const userIdFk = table.foreignKeys.find(
+      (fk) => fk.columnNames.indexOf('user_id') !== -1,
+    );
+    const tourIdFk = table.foreignKeys.find(
+      (fk) => fk.columnNames.indexOf('tour_id') !== -1,
+    );
+    await queryRunner.dropForeignKeys('reviews', [userIdFk, tourIdFk]);
+    await queryRunner.dropTable('reviews');
   }
 }

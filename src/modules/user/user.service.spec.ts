@@ -5,7 +5,7 @@ import { User } from './user.model';
 import { Repository } from 'typeorm';
 import { UserService } from './user.service';
 
-const usersMock = [new UserFactory().make(1), new UserFactory().make(2)];
+const usersMock = [new UserFactory().make('1'), new UserFactory().make('2')];
 
 describe('UserService', () => {
   let service: UserService;
@@ -37,7 +37,7 @@ describe('UserService', () => {
     it('should return a specific user', async () => {
       const repositorySpy = jest.spyOn(repository, 'findOneOrFail');
       expect(service.getById('1')).resolves.toEqual(usersMock[0]);
-      expect(repositorySpy).toBeCalledWith({ id: 1 });
+      expect(repositorySpy).toBeCalledWith({ id: '1' });
     });
   });
 

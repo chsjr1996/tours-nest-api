@@ -17,7 +17,7 @@ export enum Role {
 @Entity({ name: 'users' })
 export class User {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: string;
 
   @CreateDateColumn()
   created_at: Date;
@@ -53,7 +53,7 @@ export class User {
   is_active: boolean;
 
   constructor(
-    id?: number,
+    id?: string,
     created_at?: Date,
     updated_at?: Date,
     name?: string,
@@ -66,7 +66,7 @@ export class User {
     deleted_at?: Date,
     is_active?: boolean,
   ) {
-    this.id = id || NaN;
+    this.id = id;
     this.created_at = created_at || new Date();
     this.updated_at = updated_at || new Date();
     this.name = name || '';

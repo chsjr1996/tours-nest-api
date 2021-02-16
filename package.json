@@ -88,6 +88,15 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
+    "coveragePathIgnorePatterns": [
+      "node_modules",
+      ".module.ts",
+      "<rootDir>/database/migrations",
+      "<rootDir>/common/exception-filters/index.ts",
+      "<rootDir>/modules/index.ts",
+      "<rootDir>/swagger.setup.ts",
+      "<rootDir>/main.ts"
+    ],
     "testEnvironment": "node"
   }
 }

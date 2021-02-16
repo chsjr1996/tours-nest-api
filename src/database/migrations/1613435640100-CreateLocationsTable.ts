@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateUsersTable1612318810653 implements MigrationInterface {
+export class CreateLocationsTable1613435640100 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'users',
+        name: 'locations',
         columns: [
           {
             name: 'id',
@@ -24,41 +24,20 @@ export class CreateUsersTable1612318810653 implements MigrationInterface {
             default: 'CURRENT_TIMESTAMP',
           },
           {
-            name: 'name',
-            type: 'varchar',
-            isNullable: false,
+            name: 'coordinates',
+            type: 'varchar[]',
           },
           {
-            name: 'email',
+            name: 'address',
             type: 'varchar',
-            isNullable: false,
-            isUnique: true,
           },
           {
-            name: 'photo',
-            type: 'varchar',
-            isNullable: true,
+            name: 'description',
+            type: 'text',
           },
           {
-            name: 'role',
-            type: 'varchar',
-            enum: ['user', 'guide', 'lead-guide', 'admin'],
-            default: 'user',
-          },
-          {
-            name: 'password',
-            type: 'varchar',
-            isNullable: false,
-          },
-          {
-            name: 'password_changed_at',
-            type: 'timestamp',
-            isNullable: true,
-          },
-          {
-            name: 'password_reset_token',
-            type: 'varchar',
-            isNullable: true,
+            name: 'day',
+            type: 'int',
           },
           {
             name: 'deleted_at',
@@ -76,6 +55,6 @@ export class CreateUsersTable1612318810653 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('users');
+    await queryRunner.dropTable('locations');
   }
 }

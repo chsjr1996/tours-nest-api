@@ -8,7 +8,7 @@ import { UpdateUserDTO } from './dto/update.user.dto';
 describe('UserController', () => {
   let controller: UserController;
 
-  let mockUsers = [new UserFactory().make(1), new UserFactory().make(2)];
+  let mockUsers = [new UserFactory().make('1'), new UserFactory().make('2')];
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -25,26 +25,26 @@ describe('UserController', () => {
             getById: jest
               .fn()
               .mockImplementation((id: string) =>
-                Promise.resolve(mockUsers.find((v) => v.id === Number(id))),
+                Promise.resolve(mockUsers.find((v) => v.id === id)),
               ),
             getAll: jest.fn().mockResolvedValue(mockUsers),
             update: jest
               .fn()
               .mockImplementation((id: string, modifiedUser: UpdateUserDTO) => {
-                if (!mockUsers.find((v) => v.id === Number(id))) {
+                if (!mockUsers.find((v) => v.id === id)) {
                   return Promise.reject();
                 }
                 return Promise.resolve({
-                  ...mockUsers.find((v) => v.id === Number(id)),
+                  ...mockUsers.find((v) => v.id === id),
                   ...modifiedUser,
                 });
               }),
             softDelete: jest.fn().mockImplementation((id: string) => {
-              if (!mockUsers.find((v) => v.id === Number(id))) {
+              if (!mockUsers.find((v) => v.id === id)) {
                 return Promise.reject();
               }
-              mockUsers = mockUsers.filter((m) => m.id !== Number(id));
-              if (mockUsers.find((v) => v.id === Number(id))) {
+              mockUsers = mockUsers.filter((m) => m.id !== id);
+              if (mockUsers.find((v) => v.id === id)) {
                 return Promise.reject();
               }
               return Promise.resolve();
@@ -67,7 +67,7 @@ describe('UserController', () => {
     });
 
     it('should get created user', () => {
-      const newUser = new UserFactory().make(3);
+      const newUser = new UserFactory().make('3');
       expect(controller.store(newUser)).resolves.toEqual(newUser);
     });
   });
@@ -93,7 +93,7 @@ describe('UserController', () => {
 
     it('should get a specific user', () => {
       expect(controller.show('1')).resolves.toEqual(
-        mockUsers.find((v) => v.id === Number('1')),
+        mockUsers.find((v) => v.id === '1'),
       );
     });
   });
@@ -104,12 +104,12 @@ describe('UserController', () => {
     });
 
     it('should get error if specified user not exists', () => {
-      const modifiedUser = new UserFactory().make(3);
+      const modifiedUser = new UserFactory().make('3');
       expect(controller.update('4', modifiedUser)).rejects.toEqual(undefined);
     });
 
     it('should get modified user with correctly updated data', () => {
-      mockUsers = [...mockUsers, new UserFactory().make(3)];
+      mockUsers = [...mockUsers, new UserFactory().make('3')];
       mockUsers[2].name = 'Darth Vader';
       expect(controller.update('3', mockUsers[2])).resolves.toEqual(
         mockUsers[2],

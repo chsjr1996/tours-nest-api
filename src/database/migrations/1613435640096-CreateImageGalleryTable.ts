@@ -1,10 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateUsersTable1612318810653 implements MigrationInterface {
+export class CreateImageGalleryTable1613435640096
+  implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'users',
+        name: 'image_gallery',
         columns: [
           {
             name: 'id',
@@ -24,41 +25,13 @@ export class CreateUsersTable1612318810653 implements MigrationInterface {
             default: 'CURRENT_TIMESTAMP',
           },
           {
-            name: 'name',
+            name: 'path',
             type: 'varchar',
-            isNullable: false,
           },
           {
-            name: 'email',
-            type: 'varchar',
-            isNullable: false,
-            isUnique: true,
-          },
-          {
-            name: 'photo',
-            type: 'varchar',
-            isNullable: true,
-          },
-          {
-            name: 'role',
-            type: 'varchar',
-            enum: ['user', 'guide', 'lead-guide', 'admin'],
-            default: 'user',
-          },
-          {
-            name: 'password',
-            type: 'varchar',
-            isNullable: false,
-          },
-          {
-            name: 'password_changed_at',
-            type: 'timestamp',
-            isNullable: true,
-          },
-          {
-            name: 'password_reset_token',
-            type: 'varchar',
-            isNullable: true,
+            name: 'category',
+            type: 'enum',
+            enum: ['user', 'tour'],
           },
           {
             name: 'deleted_at',
@@ -76,6 +49,6 @@ export class CreateUsersTable1612318810653 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('users');
+    await queryRunner.dropTable('image_gallery');
   }
 }

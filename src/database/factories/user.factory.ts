@@ -2,9 +2,9 @@ import { User } from 'src/modules/user/user.model';
 import * as faker from 'faker';
 
 export class UserFactory {
-  make(id?: number) {
+  make(id?: string) {
     return new User(
-      id || faker.random.number(5),
+      id || faker.random.uuid(),
       faker.date.recent(),
       faker.date.recent(),
       faker.name.firstName(),

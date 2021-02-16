@@ -3,13 +3,30 @@
 ---
 
 ![Natours Logo](./natours-logo.png)
-![Repository Banner](./repo-banner.png)
+
+<p align="center">Logo by <a href="https://github.com/jonasschmedtmann">Jonas Schmedtmann</a>.</p>
+
+<br>
 
 # Natours NestJS API
+
+![Repository Banner](./repo-banner.png)
 
 A tour API built with NestJS and using some good development practices like: automated tests with coverage follow up and CI tool, docker automated builds and Swagger Documentation.
 
 More is coming...
+
+---
+
+## Topics
+
+- [Features / ToDo](#features--todo)
+- [Requirements](#requirements)
+- [Installation (development)](#installation-development)
+- [Deploy (production)](#deploy-production)
+  - [Ports](#ports)
+  - [Docker tips](#docker-tips)
+- [References](#references)
 
 ---
 
@@ -33,7 +50,7 @@ More is coming...
 ## Requirements
 
 - NodeJS
-- Some DBMS (default in .env.example is PostgreSQL)
+- PostgreSQL
 
 or
 
@@ -72,9 +89,13 @@ In this case you need to have a running DBMS and adjust the **.env** file.
 
 - https://hub.docker.com/r/sourcevortex/natours-nest-api
 
----
+### Ports
 
-## Docker tips
+- `3000` application
+- `5432` PostgreSQL
+- `8080` pgAdmin4
+
+### Docker tips
 
 - `docker-compose down` Stop and destroy containers
 - `docker-compose stop` Only stop containers
@@ -86,7 +107,7 @@ If you are using the production file (docker-compose.prod.yaml) then you need sp
 
 ---
 
-### References
+## References
 
 This repository is based on some articles and videos. I used them as study object, then here has some differences because I merged several concepts and did some adjusts.
 
@@ -99,11 +120,8 @@ This repository is based on some articles and videos. I used them as study objec
 
 1. This repository is based on udemy course [Node.js, Express, MongoDB & More: The Complete Bootcamp 2020](https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/), originally built with vanilla Javascript and MongoDB.
 
-
-**Natours Logo by [Jonas Schmedtmann](https://github.com/jonasschmedtmann)**.
-
 ---
 
-### Under development
+## Under development
 
 If you see any error or want a new feature, please open a issue!

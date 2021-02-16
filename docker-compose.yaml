@@ -20,6 +20,8 @@ services:
     environment:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_DB=natours_nest_api
+    ports:
+      - '5432:5432'
 
   pgadmin:
     image: dpage/pgadmin4

@@ -22,7 +22,7 @@ export class TourService {
     return this.tourRepository.find();
   }
 
-  async update(id: string, modifiedTour): Promise<Tour> {
+  async update(id: string, modifiedTour: any): Promise<Tour> {
     const tour = await this.tourRepository.findOneOrFail({ id });
     return this.tourRepository.save({ ...tour, ...modifiedTour });
   }

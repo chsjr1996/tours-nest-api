@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Review } from './review/review.model';
 import { Tour } from './tour/tour.model';
 import { User } from './user/user.model';
 
@@ -14,7 +15,7 @@ import { User } from './user/user.model';
       username: process.env.TYPEORM_USERNAME,
       password: process.env.TYPEORM_PASSWORD,
       database: process.env.TYPEORM_DATABASE,
-      entities: [User, Tour],
+      entities: [Review, Tour, User],
     }),
   ],
 })

@@ -84,10 +84,10 @@ export class Tour {
     is_active: boolean,
   ) {
     this.id = id;
-    this.created_at = created_at || new Date();
-    this.updated_at = updated_at || new Date();
+    this.created_at = created_at;
+    this.updated_at = updated_at;
     this.user_id = user_id;
-    this.start_date = start_date || new Date();
+    this.start_date = start_date;
     this.name = name;
     this.slug = slug;
     this.duration = duration;

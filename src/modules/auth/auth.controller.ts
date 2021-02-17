@@ -6,6 +6,6 @@ import { ApiTags } from '@nestjs/swagger';
 export class AuthController {
   @Post('login')
   public async login() {
-    throw new Error('Not implemented yet');
+    return Promise.reject({ message: 'Not implemented yet' });
   }
 }

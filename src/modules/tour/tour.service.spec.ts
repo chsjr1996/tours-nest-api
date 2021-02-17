@@ -5,11 +5,11 @@ import { Repository } from 'typeorm';
 import { Tour } from './tour.model';
 import { TourService } from './tour.service';
 
-const toursMock = [new TourFactory().make('1'), new TourFactory().make('2')];
-
 describe('TourService', () => {
   let service: TourService;
   let repository: Repository<Tour>;
+
+  const toursMock = [new TourFactory().make('1'), new TourFactory().make('2')];
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -18,8 +18,10 @@ describe('TourService', () => {
         {
           provide: getRepositoryToken(Tour),
           useValue: {
+            save: jest.fn().mockImplementation((tour) => Promise.resolve(tour)),
             findOneOrFail: jest.fn().mockReturnValue(toursMock[0]),
             find: jest.fn().mockReturnValue(toursMock),
+            softDelete: jest.fn().mockResolvedValue(undefined),
           },
         },
       ],
@@ -33,8 +35,15 @@ describe('TourService', () => {
     expect(service).toBeDefined();
   });
 
+  describe('store', () => {
+    it('should return a created tour', () => {
+      const newTour = new TourFactory().make('3');
+      expect(service.store(newTour)).resolves.toEqual(newTour);
+    });
+  });
+
   describe('getById', () => {
-    it('should return a specific tour', async () => {
+    it('should return a specific tour', () => {
       const repositorySpy = jest.spyOn(repository, 'findOneOrFail');
       expect(service.getById('1')).resolves.toEqual(toursMock[0]);
       expect(repositorySpy).toBeCalledWith({ id: '1' });
@@ -42,9 +51,22 @@ describe('TourService', () => {
   });
 
   describe('getAll', () => {
-    it('should return an array of tours', async () => {
-      const tours = await service.getAll();
-      expect(tours).toEqual(toursMock);
+    it('should return an array of tours', () => {
+      expect(service.getAll()).resolves.toEqual(toursMock);
+    });
+  });
+
+  describe('update', () => {
+    it('should return a updated user with new data', () => {
+      const modifiedTour = new TourFactory().make('3');
+      modifiedTour.name = 'Death star!';
+      expect(service.update('3', modifiedTour)).resolves.toEqual(modifiedTour);
+    });
+  });
+
+  describe('softDelete', () => {
+    it('should resolve softDelete', () => {
+      expect(service.softDelete('3')).resolves.toEqual(undefined);
     });
   });
 });

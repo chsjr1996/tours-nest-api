@@ -67,16 +67,16 @@ export class User {
     is_active?: boolean,
   ) {
     this.id = id;
-    this.created_at = created_at || new Date();
-    this.updated_at = updated_at || new Date();
-    this.name = name || '';
-    this.email = email || '';
-    this.photo = photo || '';
-    this.role = role || '';
-    this.password = password || '';
+    this.created_at = created_at;
+    this.updated_at = updated_at;
+    this.name = name;
+    this.email = email;
+    this.photo = photo;
+    this.role = role;
+    this.password = password;
     this.password_changed_at = password_changed_at;
-    this.password_reset_token = password_reset_token || '';
+    this.password_reset_token = password_reset_token;
     this.deleted_at = deleted_at;
-    this.is_active = is_active || true;
+    this.is_active = is_active;
   }
 }

@@ -15,4 +15,13 @@ describe('AuthController', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
+
+  describe('login', () => {
+    // TODO: Temporarily... the auth flow is not defined yet
+    it('should reject this promise', () => {
+      expect(controller.login()).rejects.toEqual({
+        message: 'Not implemented yet',
+      });
+    });
+  });
 });

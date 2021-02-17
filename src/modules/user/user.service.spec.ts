@@ -5,11 +5,11 @@ import { User } from './user.model';
 import { Repository } from 'typeorm';
 import { UserService } from './user.service';
 
-const usersMock = [new UserFactory().make('1'), new UserFactory().make('2')];
-
 describe('UserService', () => {
   let service: UserService;
   let repository: Repository<User>;
+
+  const usersMock = [new UserFactory().make('1'), new UserFactory().make('2')];
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({

@@ -6,11 +6,8 @@ import { UserService } from './user.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
+  exports: [UserService],
   controllers: [UserController],
   providers: [UserService],
 })
 export class UserModule {}
-
-// TODO:
-// - Protect password with hash bcrypt
-// - Improve put method to allow update registers parts

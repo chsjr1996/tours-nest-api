@@ -7,8 +7,10 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { Tour } from './tour.model';
 import { TourService } from './tour.service';
 
@@ -17,6 +19,8 @@ import { TourService } from './tour.service';
 export class TourController {
   constructor(private tourService: TourService) {}
 
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Post()
   public async store(@Body() body: any): Promise<Tour> {
     return this.tourService.store(body);

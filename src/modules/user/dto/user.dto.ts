@@ -5,7 +5,7 @@ export class UserDTO {
     description:
       'The user ID. If you will create a new user then you need set id to "0" or omit this property because in database it\'s auto incremented',
   })
-  id: number;
+  id: string;
 
   @ApiProperty({ required: false })
   created_at: Date;

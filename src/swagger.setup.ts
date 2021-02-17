@@ -5,7 +5,7 @@ export default (app: INestApplication) => {
   const options = new DocumentBuilder()
     .setTitle('Natours Nest API')
     .setDescription('Natours API Documentation')
-    .setVersion('0.0.1')
+    .setVersion('0.1.0')
     .setLicense(
       'MIT',
       'https://github.com/chsjr1996/natours-nest-api/blob/main/LICENSE',
@@ -15,6 +15,7 @@ export default (app: INestApplication) => {
     .addTag('tour', 'Tour resource with main API data')
     .addTag('user', 'User resource with common and admins users')
     .addServer('http://localhost:3000', 'Development')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, options);

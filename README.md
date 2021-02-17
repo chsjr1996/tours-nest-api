@@ -111,6 +111,7 @@ If you are using the production file (docker-compose.prod.yaml) then you need sp
 
 This repository is based on some articles and videos. I used them as study object, then here has some differences because I merged several concepts and did some adjusts.
 
+- [NestJS Docs](https://docs.nestjs.com)
 - [Node.js, Express, MongoDB & More: The Complete Bootcamp 2020](https://www.udemy.com/course/nodejs-express-mongodb-bootcamp) `(1)`
 - [Nest.js: desenvolvimento de APIs, by: Full Cycle](https://www.youtube.com/watch?v=BT7novtdAgI&t=6650s)
 - [Agilidade brutal no backend com Nest.js, by: Full Cycle](https://www.youtube.com/watch?v=qE0jRojtx08)

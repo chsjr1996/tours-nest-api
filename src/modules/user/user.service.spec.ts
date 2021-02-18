@@ -36,37 +36,39 @@ describe('UserService', () => {
   });
 
   describe('store', () => {
-    it('should return a created user', () => {
+    it('should return a created user', async () => {
       const newUser = new UserFactory().make('3');
-      expect(service.store(newUser)).resolves.toEqual(newUser);
+      await expect(service.store(newUser)).resolves.toEqual(newUser);
     });
   });
 
   describe('getById', () => {
-    it('should return a specific user', () => {
+    it('should return a specific user', async () => {
       const repositorySpy = jest.spyOn(repository, 'findOneOrFail');
-      expect(service.getById('1')).resolves.toEqual(usersMock[0]);
+      await expect(service.getById('1')).resolves.toEqual(usersMock[0]);
       expect(repositorySpy).toBeCalledWith({ id: '1' });
     });
   });
 
   describe('getAll', () => {
-    it('should return an array of users', () => {
-      expect(service.getAll()).resolves.toEqual(usersMock);
+    it('should return an array of users', async () => {
+      await expect(service.getAll()).resolves.toEqual(usersMock);
     });
   });
 
   describe('update', () => {
-    it('should return a updated user with new data', () => {
+    it('should return a updated user with new data', async () => {
       const modifiedUser = new UserFactory().make('3');
       modifiedUser.name = 'Luke Skywalker';
-      expect(service.update('3', modifiedUser)).resolves.toEqual(modifiedUser);
+      await expect(service.update('3', modifiedUser)).resolves.toEqual(
+        modifiedUser,
+      );
     });
   });
 
   describe('softDelete', () => {
-    it('should resolve softDelete', () => {
-      expect(service.softDelete('3')).resolves.toEqual(undefined);
+    it('should resolve softDelete', async () => {
+      await expect(service.softDelete('3')).resolves.toEqual(undefined);
     });
   });
 });

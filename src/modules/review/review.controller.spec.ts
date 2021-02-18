@@ -67,9 +67,9 @@ describe('ReviewController', () => {
       expect(typeof controller.store).toBe('function');
     });
 
-    it('should get created review', () => {
+    it('should get created review', async () => {
       const newReview = new ReviewFactory().make('3');
-      expect(controller.store(newReview)).resolves.toEqual(newReview);
+      await expect(controller.store(newReview)).resolves.toEqual(newReview);
     });
   });
 
@@ -78,8 +78,8 @@ describe('ReviewController', () => {
       expect(typeof controller.index).toBe('function');
     });
 
-    it('should get an array of reviews', () => {
-      expect(controller.index()).resolves.toEqual(mockReviews);
+    it('should get an array of reviews', async () => {
+      await expect(controller.index()).resolves.toEqual(mockReviews);
     });
   });
 
@@ -88,12 +88,12 @@ describe('ReviewController', () => {
       expect(typeof controller.show).toBe('function');
     });
 
-    it('should get undefined if specified review not exists', () => {
-      expect(controller.show('3')).resolves.toEqual(undefined);
+    it('should get undefined if specified review not exists', async () => {
+      await expect(controller.show('3')).resolves.toEqual(undefined);
     });
 
-    it('should get a specific review', () => {
-      expect(controller.show('1')).resolves.toEqual(
+    it('should get a specific review', async () => {
+      await expect(controller.show('1')).resolves.toEqual(
         mockReviews.find((v) => v.id === '1'),
       );
     });
@@ -109,10 +109,10 @@ describe('ReviewController', () => {
       expect(controller.update('4', modifiedReview)).rejects.toEqual(undefined);
     });
 
-    it('should get modified review with correctly updated data', () => {
+    it('should get modified review with correctly updated data', async () => {
       mockReviews = [...mockReviews, new ReviewFactory().make('3')];
       mockReviews[2].review = 'Very cool!';
-      expect(controller.update('3', mockReviews[2])).resolves.toEqual(
+      await expect(controller.update('3', mockReviews[2])).resolves.toEqual(
         mockReviews[2],
       );
     });
@@ -127,8 +127,8 @@ describe('ReviewController', () => {
       expect(controller.delete('4')).rejects.toEqual(undefined);
     });
 
-    it('should get success on delete review', () => {
-      expect(controller.delete('2')).resolves.toEqual(undefined);
+    it('should get success on delete review', async () => {
+      await expect(controller.delete('2')).resolves.toEqual(undefined);
     });
   });
 });

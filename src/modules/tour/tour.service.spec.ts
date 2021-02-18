@@ -36,37 +36,39 @@ describe('TourService', () => {
   });
 
   describe('store', () => {
-    it('should return a created tour', () => {
+    it('should return a created tour', async () => {
       const newTour = new TourFactory().make('3');
-      expect(service.store(newTour)).resolves.toEqual(newTour);
+      await expect(service.store(newTour)).resolves.toEqual(newTour);
     });
   });
 
   describe('getById', () => {
-    it('should return a specific tour', () => {
+    it('should return a specific tour', async () => {
       const repositorySpy = jest.spyOn(repository, 'findOneOrFail');
-      expect(service.getById('1')).resolves.toEqual(toursMock[0]);
+      await expect(service.getById('1')).resolves.toEqual(toursMock[0]);
       expect(repositorySpy).toBeCalledWith({ id: '1' });
     });
   });
 
   describe('getAll', () => {
-    it('should return an array of tours', () => {
-      expect(service.getAll()).resolves.toEqual(toursMock);
+    it('should return an array of tours', async () => {
+      await expect(service.getAll()).resolves.toEqual(toursMock);
     });
   });
 
   describe('update', () => {
-    it('should return a updated user with new data', () => {
+    it('should return a updated user with new data', async () => {
       const modifiedTour = new TourFactory().make('3');
       modifiedTour.name = 'Death star!';
-      expect(service.update('3', modifiedTour)).resolves.toEqual(modifiedTour);
+      await expect(service.update('3', modifiedTour)).resolves.toEqual(
+        modifiedTour,
+      );
     });
   });
 
   describe('softDelete', () => {
-    it('should resolve softDelete', () => {
-      expect(service.softDelete('3')).resolves.toEqual(undefined);
+    it('should resolve softDelete', async () => {
+      await expect(service.softDelete('3')).resolves.toEqual(undefined);
     });
   });
 });

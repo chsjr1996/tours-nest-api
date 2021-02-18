@@ -62,9 +62,9 @@ describe('TourController', () => {
       expect(typeof controller.store).toBe('function');
     });
 
-    it('should get created tour', () => {
+    it('should get created tour', async () => {
       const newTour = new TourFactory().make('3');
-      expect(controller.store(newTour)).resolves.toEqual(newTour);
+      await expect(controller.store(newTour)).resolves.toEqual(newTour);
     });
   });
 
@@ -73,8 +73,8 @@ describe('TourController', () => {
       expect(typeof controller.index).toBe('function');
     });
 
-    it('should get an array of tours', () => {
-      expect(controller.index()).resolves.toEqual(mockTours);
+    it('should get an array of tours', async () => {
+      await expect(controller.index()).resolves.toEqual(mockTours);
     });
   });
 
@@ -83,12 +83,12 @@ describe('TourController', () => {
       expect(typeof controller.show).toBe('function');
     });
 
-    it('should get undefined if specified tour not exists', () => {
-      expect(controller.show('3')).resolves.toEqual(undefined);
+    it('should get undefined if specified tour not exists', async () => {
+      await expect(controller.show('3')).resolves.toEqual(undefined);
     });
 
-    it('should get a specific tour', () => {
-      expect(controller.show('1')).resolves.toEqual(
+    it('should get a specific tour', async () => {
+      await expect(controller.show('1')).resolves.toEqual(
         mockTours.find((v) => v.id === '1'),
       );
     });
@@ -104,10 +104,10 @@ describe('TourController', () => {
       expect(controller.update('4', modifiedTour)).rejects.toEqual(undefined);
     });
 
-    it('should get modified tour with correctly updated data', () => {
+    it('should get modified tour with correctly updated data', async () => {
       mockTours = [...mockTours, new TourFactory().make('3')];
       mockTours[2].name = 'Darth Vader';
-      expect(controller.update('3', mockTours[2])).resolves.toEqual(
+      await expect(controller.update('3', mockTours[2])).resolves.toEqual(
         mockTours[2],
       );
     });
@@ -122,8 +122,8 @@ describe('TourController', () => {
       expect(controller.delete('4')).rejects.toEqual(undefined);
     });
 
-    it('should get success on delete tour', () => {
-      expect(controller.delete('2')).resolves.toEqual(undefined);
+    it('should get success on delete tour', async () => {
+      await expect(controller.delete('2')).resolves.toEqual(undefined);
     });
   });
 });

@@ -66,9 +66,9 @@ describe('UserController', () => {
       expect(typeof controller.store).toBe('function');
     });
 
-    it('should get created user', () => {
+    it('should get created user', async () => {
       const newUser = new UserFactory().make('3');
-      expect(controller.store(newUser)).resolves.toEqual(newUser);
+      await expect(controller.store(newUser)).resolves.toEqual(newUser);
     });
   });
 
@@ -77,8 +77,8 @@ describe('UserController', () => {
       expect(typeof controller.index).toBe('function');
     });
 
-    it('should get an array of users', () => {
-      expect(controller.index()).resolves.toEqual(mockUsers);
+    it('should get an array of users', async () => {
+      await expect(controller.index()).resolves.toEqual(mockUsers);
     });
   });
 
@@ -87,12 +87,12 @@ describe('UserController', () => {
       expect(typeof controller.show).toBe('function');
     });
 
-    it('should get undefined if specified user not exists', () => {
-      expect(controller.show('3')).resolves.toEqual(undefined);
+    it('should get undefined if specified user not exists', async () => {
+      await expect(controller.show('3')).resolves.toEqual(undefined);
     });
 
-    it('should get a specific user', () => {
-      expect(controller.show('1')).resolves.toEqual(
+    it('should get a specific user', async () => {
+      await expect(controller.show('1')).resolves.toEqual(
         mockUsers.find((v) => v.id === '1'),
       );
     });
@@ -108,10 +108,10 @@ describe('UserController', () => {
       expect(controller.update('4', modifiedUser)).rejects.toEqual(undefined);
     });
 
-    it('should get modified user with correctly updated data', () => {
+    it('should get modified user with correctly updated data', async () => {
       mockUsers = [...mockUsers, new UserFactory().make('3')];
       mockUsers[2].name = 'Darth Vader';
-      expect(controller.update('3', mockUsers[2])).resolves.toEqual(
+      await expect(controller.update('3', mockUsers[2])).resolves.toEqual(
         mockUsers[2],
       );
     });
@@ -126,8 +126,8 @@ describe('UserController', () => {
       expect(controller.delete('4')).rejects.toEqual(undefined);
     });
 
-    it('should get success on delete user', () => {
-      expect(controller.delete('2')).resolves.toEqual(undefined);
+    it('should get success on delete user', async () => {
+      await expect(controller.delete('2')).resolves.toEqual(undefined);
     });
   });
 });

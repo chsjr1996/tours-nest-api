@@ -62,11 +62,11 @@ describe('UserService', () => {
   });
 
   describe('generateToken', () => {
-    it('should return a token', () => {
+    it('should return a token', async () => {
       const payload = { sub: mockUser.id };
       const jwtServiceSpy = jest.spyOn(jwtService, 'sign');
       const jwtFake = jwtService.sign(payload);
-      expect(service.generateToken(mockUser)).resolves.toEqual({
+      await expect(service.generateToken(mockUser)).resolves.toEqual({
         access_token: jwtFake,
       });
       expect(jwtServiceSpy).toBeCalledWith(payload);

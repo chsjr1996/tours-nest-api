@@ -41,37 +41,39 @@ describe('ReviewService', () => {
   });
 
   describe('store', () => {
-    it('should return a created review', () => {
+    it('should return a created review', async () => {
       const newReview = new ReviewFactory().make('3');
-      expect(service.store(newReview)).resolves.toEqual(newReview);
+      await expect(service.store(newReview)).resolves.toEqual(newReview);
     });
   });
 
   describe('getById', () => {
-    it('should return a specific review', () => {
+    it('should return a specific review', async () => {
       const repositorySpy = jest.spyOn(repository, 'findOneOrFail');
-      expect(service.getById('1')).resolves.toEqual(reviewsMock[0]);
+      await expect(service.getById('1')).resolves.toEqual(reviewsMock[0]);
       expect(repositorySpy).toBeCalledWith({ id: '1' });
     });
   });
 
   describe('getAll', () => {
-    it('should return an array of reviews', () => {
-      expect(service.getAll()).resolves.toEqual(reviewsMock);
+    it('should return an array of reviews', async () => {
+      await expect(service.getAll()).resolves.toEqual(reviewsMock);
     });
   });
 
   describe('update', () => {
-    it('should return a updated user with new data', () => {
+    it('should return a updated user with new data', async () => {
       const modifiedUser = new ReviewFactory().make('3');
       modifiedUser.review = 'Very Cool!';
-      expect(service.update('3', modifiedUser)).resolves.toEqual(modifiedUser);
+      await expect(service.update('3', modifiedUser)).resolves.toEqual(
+        modifiedUser,
+      );
     });
   });
 
   describe('softDelete', () => {
-    it('should resolve softDelete', () => {
-      expect(service.softDelete('3')).resolves.toEqual(undefined);
+    it('should resolve softDelete', async () => {
+      await expect(service.softDelete('3')).resolves.toEqual(undefined);
     });
   });
 });

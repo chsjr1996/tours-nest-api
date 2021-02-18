@@ -39,11 +39,11 @@ describe('AuthController', () => {
   });
 
   describe('login', () => {
-    it('should reject this promise', () => {
+    it('should reject this promise', async () => {
       req.user = {
         id: '1',
       };
-      expect(controller.login(req)).resolves.toEqual({
+      await expect(controller.login(req)).resolves.toEqual({
         access_token: Buffer.from('1').toString('base64'),
       });
     });

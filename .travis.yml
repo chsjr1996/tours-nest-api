@@ -4,6 +4,8 @@ node_js:
 dist: trusty
 env:
   - NODE_ENV=ci PORT=3000
+  - JWT_SECRET=awesomeTestToken
+  - JWT_EXPIRES=60s
 cache:
   directories:
     - node_modules

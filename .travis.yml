@@ -3,9 +3,7 @@ node_js:
   - '12.14'
 dist: trusty
 env:
-  - NODE_ENV=ci PORT=3000
-  - JWT_SECRET=awesomeTestToken
-  - JWT_EXPIRES=60s
+  - NODE_ENV=ci PORT=3000 JWT_SECRET=awesomeTestToken JWT_EXPIRES=60s
 cache:
   directories:
     - node_modules

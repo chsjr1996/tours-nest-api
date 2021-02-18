@@ -26,6 +26,7 @@ More is coming...
 - [Deploy (production)](#deploy-production)
   - [Ports](#ports)
   - [Docker tips](#docker-tips)
+- [API Documentation](#api-documentation)
 - [References](#references)
 
 ---
@@ -42,6 +43,7 @@ More is coming...
 - [ ] Web Socket
 - [ ] GraphQL
 - [ ] Get 100% code coverage
+- [ ] PostGIS (The challenge)
 
 ...
 
@@ -83,7 +85,7 @@ You can use docker hub image too:
 
 - `docker pull sourcevortex/natours-nest-api`
 
-In this case you need to have a running DBMS and adjust the **.env** file.
+In this case you need to have a running PostgreSQL instance and adjust the **.env** file.
 
 **See more in:**
 
@@ -104,6 +106,16 @@ In this case you need to have a running DBMS and adjust the **.env** file.
 If you are using the production file (docker-compose.prod.yaml) then you need specify this after of `docker-compose`, e.g.:
 
 - `docker-compose -f docker-compose.prod.yaml down`
+
+---
+
+## API Documentation
+
+You can access the API Documentation in [http://localhost:3000/api](http://localhost:3000/api`) (or in other defined APP Port). The `/api` endpoint will display a documentation built with Swagger, if you want the OAS data then access the `/api-json` endpoint. (1)
+
+> Notes
+
+1. The OAS (OpenAPI Specification) is a language-agnostic interface to RESTful. You can use the OAS output in Insomnia Designer, only copy `/api-json` result and paste in 'Design' tab.
 
 ---
 

@@ -1,10 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { JwtModule, JwtService } from '@nestjs/jwt';
 import { UserFactory } from 'src/database/factories/user.factory';
-import { UserDTO } from '../user/dto/user.dto';
 import { AuthService } from './auth.service';
+import { PassportModule } from '@nestjs/passport';
+import { UserService } from '../user/user.service';
 
 describe('UserService', () => {
   let service: AuthService;
+  let jwtService: JwtService;
 
   const testEmail = 'test@natours.com';
   const testPassword = '12345678';
@@ -12,38 +15,30 @@ describe('UserService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [
+        PassportModule.register({ defaultStrategy: 'jwt' }),
+        JwtModule.register({
+          secretOrPrivateKey: 'awesomeSecret',
+          signOptions: {
+            expiresIn: 3600,
+          },
+        }),
+      ],
       providers: [
         AuthService,
         {
-          provide: AuthService,
+          provide: UserService,
           useValue: {
-            validateUser: jest
+            getAll: jest
               .fn()
-              .mockImplementation((email: string, password: string) => {
-                const user = mockUser.email === email ? mockUser : null;
-
-                if (user && user.password === password) {
-                  return Promise.resolve(mockUser);
-                }
-
-                return Promise.resolve(null);
-              }),
-            generateToken: jest
-              .fn()
-              .mockImplementation((user: Omit<UserDTO, 'password'>) => {
-                // This is a very abstract JWT representation... just ignore it rsrs :)
-                return Promise.resolve({
-                  access_token: Buffer.from(user.id.toString()).toString(
-                    'base64',
-                  ),
-                });
-              }),
+              .mockImplementation(() => Promise.resolve([mockUser])),
           },
         },
       ],
     }).compile();
 
     service = module.get<AuthService>(AuthService);
+    jwtService = module.get<JwtService>(JwtService);
   });
 
   it('should be defined', () => {
@@ -51,22 +46,30 @@ describe('UserService', () => {
   });
 
   describe('validateUser', () => {
-    it('should return a user if auth data is correct', () => {
-      expect(service.validateUser(testEmail, testPassword)).resolves.toEqual(
-        mockUser,
-      );
+    it('should return a user if auth data is correct', async () => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { password, ...mockUserWithoutPassword } = mockUser;
+      await expect(
+        service.validateUser(testEmail, testPassword),
+      ).resolves.toEqual(mockUserWithoutPassword);
     });
 
-    it('should return null if auth data is incorrect', () => {
-      expect(service.validateUser(testEmail, '12345679')).resolves.toBeNull();
+    it('should return null if auth data is incorrect', async () => {
+      await expect(
+        service.validateUser(testEmail, '12345679'),
+      ).resolves.toBeNull();
     });
   });
 
   describe('generateToken', () => {
     it('should return a token', () => {
+      const payload = { sub: mockUser.id };
+      const jwtServiceSpy = jest.spyOn(jwtService, 'sign');
+      const jwtFake = jwtService.sign(payload);
       expect(service.generateToken(mockUser)).resolves.toEqual({
-        access_token: Buffer.from('1').toString('base64'),
+        access_token: jwtFake,
       });
+      expect(jwtServiceSpy).toBeCalledWith(payload);
     });
   });
 });

@@ -4,7 +4,7 @@ import { Request } from 'express';
 import { UserDTO } from '../user/dto/user.dto';
 import { AuthService } from './auth.service';
 import { LoginDTO } from './dto/login.dto';
-import { LocalAuthGuard } from './local-auth.guard';
+import { LocalAuthGuard } from './guards/local-auth.guard';
 
 @ApiTags('auth')
 @Controller('v1/auth')

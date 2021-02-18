@@ -7,4 +7,3 @@
 ## Todo
 
 - [ ] Improve tests in this module (poor coverage)
-- [ ] Try improve this directory structure (many files in this module)

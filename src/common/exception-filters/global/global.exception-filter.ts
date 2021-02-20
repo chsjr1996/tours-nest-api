@@ -6,7 +6,7 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { get } from 'lodash';
-import errorResponseBuilder from 'src/common/builders/error-response.builder';
+import errorResponseBuilder from 'src/common/builders/error-response/error-response.builder';
 
 @Catch()
 export default class GlobalExceptionFilter implements ExceptionFilter {
@@ -15,10 +15,10 @@ export default class GlobalExceptionFilter implements ExceptionFilter {
     const res = ctx.getResponse<Response>();
 
     return errorResponseBuilder(
+      HttpStatus.INTERNAL_SERVER_ERROR,
       res,
       'Unknown error',
       get(exception, 'stack', {}),
-      HttpStatus.INTERNAL_SERVER_ERROR,
     );
   }
 }

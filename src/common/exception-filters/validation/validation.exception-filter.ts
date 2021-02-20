@@ -6,7 +6,7 @@ import {
   BadRequestException,
 } from '@nestjs/common';
 import { get } from 'lodash';
-import errorResponseBuilder from 'src/common/builders/error-response.builder';
+import errorResponseBuilder from 'src/common/builders/error-response/error-response.builder';
 
 @Catch(BadRequestException)
 export default class ValidationExceptionFilter implements ExceptionFilter {
@@ -16,10 +16,10 @@ export default class ValidationExceptionFilter implements ExceptionFilter {
     const exceptionResponse = exception.getResponse();
 
     return errorResponseBuilder(
+      exception.getStatus(),
       res,
       get(exceptionResponse, 'message', 'Unknown validation error'),
       exception.stack,
-      exception.getStatus(),
     );
   }
 }

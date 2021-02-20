@@ -6,7 +6,7 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { QueryFailedError } from 'typeorm/error/QueryFailedError';
-import errorResponseBuilder from 'src/common/builders/error-response.builder';
+import errorResponseBuilder from 'src/common/builders/error-response/error-response.builder';
 
 /**
  * @todo improve exception with specific DBMS errors like '23505' (duplicated field)
@@ -18,10 +18,10 @@ export default class QueryFailedFilter implements ExceptionFilter {
     const res = ctx.getResponse<Response>();
 
     return errorResponseBuilder(
+      HttpStatus.INTERNAL_SERVER_ERROR,
       res,
       'Unknown error',
       exception.message,
-      HttpStatus.INTERNAL_SERVER_ERROR,
     );
   }
 }

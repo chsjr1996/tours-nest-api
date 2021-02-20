@@ -46,42 +46,42 @@ describe('UserFactory', () => {
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker date recent if createdAt is null', () => {
+    it('should call faker date recent if createdAt is null', () => {
       const userParamsWithoutCreatedAt = { ...userParams, createdAt: null };
       const fakerSpy = jest.spyOn(faker.date, 'recent');
       factory.make(userParamsWithoutCreatedAt);
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker date recent if updatedAt is null', () => {
+    it('should call faker date recent if updatedAt is null', () => {
       const userParamsWithoutUpdatedAt = { ...userParams, updatedAt: null };
       const fakerSpy = jest.spyOn(faker.date, 'recent');
       factory.make(userParamsWithoutUpdatedAt);
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker name firstName if name is null', () => {
+    it('should call faker name firstName if name is null', () => {
       const userParamsWithoutName = { ...userParams, name: null };
       const fakerSpy = jest.spyOn(faker.name, 'firstName');
       factory.make(userParamsWithoutName);
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker internet email if email is null', () => {
+    it('should call faker internet email if email is null', () => {
       const userParamsWithoutEmail = { ...userParams, email: null };
       const fakerSpy = jest.spyOn(faker.internet, 'email');
       factory.make(userParamsWithoutEmail);
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker random number if role is null', () => {
+    it('should call faker random number if role is null', () => {
       const userParamsWithoutRole = { ...userParams, role: null };
       const fakerSpy = jest.spyOn(faker.random, 'number');
       factory.make(userParamsWithoutRole);
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker random alphaNumeric if password is null', () => {
+    it('should call faker random alphaNumeric if password is null', () => {
       const userParamsWithoutPassword = { ...userParams, password: null };
       const fakerSpy = jest.spyOn(faker.random, 'alphaNumeric');
       factory.make(userParamsWithoutPassword);

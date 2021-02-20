@@ -60,56 +60,56 @@ describe('TourFactory', () => {
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker date recent if createdAt is null', () => {
+    it('should call faker date recent if createdAt is null', () => {
       const tourParamsWithoutCreatedAt = { ...tourParams, createdAt: null };
       const fakerSpy = jest.spyOn(faker.date, 'recent');
       factory.make(tourParamsWithoutCreatedAt);
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker date recent if updatedAt is null', () => {
+    it('should call faker date recent if updatedAt is null', () => {
       const tourParamsWithoutUpdatedAt = { ...tourParams, updatedAt: null };
       const fakerSpy = jest.spyOn(faker.date, 'recent');
       factory.make(tourParamsWithoutUpdatedAt);
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker random uuid if userId is null', () => {
+    it('should call faker random uuid if userId is null', () => {
       const tourParamsWithoutUserId = { ...tourParams, userId: null };
       const fakerSpy = jest.spyOn(faker.random, 'uuid');
       factory.make(tourParamsWithoutUserId);
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker date recent if startDate is null', () => {
+    it('should call faker date recent if startDate is null', () => {
       const tourParamsWithoutStartDate = { ...tourParams, startDate: null };
       const fakerSpy = jest.spyOn(faker.date, 'recent');
       factory.make(tourParamsWithoutStartDate);
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker random words if name is null', () => {
+    it('should call faker random words if name is null', () => {
       const tourParamsWithoutName = { ...tourParams, name: null };
       const fakerSpy = jest.spyOn(faker.random, 'words');
       factory.make(tourParamsWithoutName);
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker random words if slug is null', () => {
+    it('should call faker random words if slug is null', () => {
       const tourParamsWithoutSlug = { ...tourParams, slug: null };
       const fakerSpy = jest.spyOn(faker.random, 'words');
       factory.make(tourParamsWithoutSlug);
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker random number if duration is null', () => {
+    it('should call faker random number if duration is null', () => {
       const tourParamsWithoutDuration = { ...tourParams, duration: null };
       const fakerSpy = jest.spyOn(faker.random, 'number');
       factory.make(tourParamsWithoutDuration);
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker random number if maxGroupSize is null', () => {
+    it('should call faker random number if maxGroupSize is null', () => {
       const tourParamsWithoutMaxGroupSize = {
         ...tourParams,
         maxGroupSize: null,
@@ -119,14 +119,14 @@ describe('TourFactory', () => {
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker random word if difficulty is null', () => {
+    it('should call faker random word if difficulty is null', () => {
       const tourParamsWithoutDifficulty = { ...tourParams, difficulty: null };
       const fakerSpy = jest.spyOn(faker.random, 'word');
       factory.make(tourParamsWithoutDifficulty);
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker random number if ratingsAverage is null', () => {
+    it('should call faker random number if ratingsAverage is null', () => {
       const tourParamsWithoutRatingsAverage = {
         ...tourParams,
         ratingsAverage: null,
@@ -136,7 +136,7 @@ describe('TourFactory', () => {
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker random number if ratingsQuantity is null', () => {
+    it('should call faker random number if ratingsQuantity is null', () => {
       const tourParamsWithoutRatingsQuantity = {
         ...tourParams,
         ratingsQuantity: null,
@@ -146,21 +146,21 @@ describe('TourFactory', () => {
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker random number if price is null', () => {
+    it('should call faker random number if price is null', () => {
       const tourParamsWithoutPrice = { ...tourParams, price: null };
       const fakerSpy = jest.spyOn(faker.random, 'number');
       factory.make(tourParamsWithoutPrice);
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker lorem sentences if summary is null', () => {
+    it('should call faker lorem sentences if summary is null', () => {
       const tourParamsWithoutSummary = { ...tourParams, summary: null };
       const fakerSpy = jest.spyOn(faker.lorem, 'sentences');
       factory.make(tourParamsWithoutSummary);
       expect(fakerSpy).toBeCalled();
     });
 
-    it('shoud call faker lorem sentences if description is null', () => {
+    it('should call faker lorem sentences if description is null', () => {
       const tourParamsWithoutDescription = { ...tourParams, description: null };
       const fakerSpy = jest.spyOn(faker.lorem, 'sentences');
       factory.make(tourParamsWithoutDescription);

@@ -9,7 +9,10 @@ describe('TourService', () => {
   let service: TourService;
   let repository: Repository<Tour>;
 
-  const toursMock = [new TourFactory().make('1'), new TourFactory().make('2')];
+  const toursMock = [
+    new TourFactory().make({ id: '1' }),
+    new TourFactory().make({ id: '2' }),
+  ];
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -37,7 +40,7 @@ describe('TourService', () => {
 
   describe('store', () => {
     it('should return a created tour', async () => {
-      const newTour = new TourFactory().make('3');
+      const newTour = new TourFactory().make({ id: '3' });
       await expect(service.store(newTour)).resolves.toEqual(newTour);
     });
   });
@@ -58,7 +61,7 @@ describe('TourService', () => {
 
   describe('update', () => {
     it('should return a updated user with new data', async () => {
-      const modifiedTour = new TourFactory().make('3');
+      const modifiedTour = new TourFactory().make({ id: '3' });
       modifiedTour.name = 'Death star!';
       await expect(service.update('3', modifiedTour)).resolves.toEqual(
         modifiedTour,

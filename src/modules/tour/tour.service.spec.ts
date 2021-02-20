@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { TourFactory } from 'src/database/factories/tour.factory';
+import { TourFactory } from 'src/database/factories/tour/tour.factory';
 import { Repository } from 'typeorm';
 import { Tour } from './tour.model';
 import { TourService } from './tour.service';

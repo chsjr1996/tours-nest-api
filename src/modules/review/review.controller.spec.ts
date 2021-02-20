@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ReviewFactory } from 'src/database/factories/review.factory';
+import { ReviewFactory } from 'src/database/factories/review/review.factory';
 import { ReviewController } from './review.controller';
 import { ReviewService } from './review.service';
 
@@ -7,8 +7,8 @@ describe('ReviewController', () => {
   let controller: ReviewController;
 
   let mockReviews = [
-    new ReviewFactory().make('1'),
-    new ReviewFactory().make('2'),
+    new ReviewFactory().make({ id: '1' }),
+    new ReviewFactory().make({ id: '2' }),
   ];
 
   beforeEach(async () => {
@@ -68,7 +68,7 @@ describe('ReviewController', () => {
     });
 
     it('should get created review', async () => {
-      const newReview = new ReviewFactory().make('3');
+      const newReview = new ReviewFactory().make({ id: '3' });
       await expect(controller.store(newReview)).resolves.toEqual(newReview);
     });
   });
@@ -105,12 +105,12 @@ describe('ReviewController', () => {
     });
 
     it('should get error if specified review not exists', () => {
-      const modifiedReview = new ReviewFactory().make('3');
+      const modifiedReview = new ReviewFactory().make({ id: '3' });
       expect(controller.update('4', modifiedReview)).rejects.toEqual(undefined);
     });
 
     it('should get modified review with correctly updated data', async () => {
-      mockReviews = [...mockReviews, new ReviewFactory().make('3')];
+      mockReviews = [...mockReviews, new ReviewFactory().make({ id: '3' })];
       mockReviews[2].review = 'Very cool!';
       await expect(controller.update('3', mockReviews[2])).resolves.toEqual(
         mockReviews[2],

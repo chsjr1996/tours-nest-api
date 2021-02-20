@@ -1,6 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { UserFactory } from 'src/database/factories/user.factory';
+import {
+  UserFactory,
+  UserParams,
+} from 'src/database/factories/user/user.factory';
 import { User } from './user.model';
 import { Repository } from 'typeorm';
 import { UserService } from './user.service';
@@ -9,7 +12,15 @@ describe('UserService', () => {
   let service: UserService;
   let repository: Repository<User>;
 
-  const usersMock = [new UserFactory().make('1'), new UserFactory().make('2')];
+  const userParams = (id: string): UserParams => ({
+    id,
+    email: 'test@natours.com',
+    password: '12345678',
+  });
+  const usersMock = [
+    new UserFactory().make(userParams('1')),
+    new UserFactory().make(userParams('2')),
+  ];
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -37,7 +48,7 @@ describe('UserService', () => {
 
   describe('store', () => {
     it('should return a created user', async () => {
-      const newUser = new UserFactory().make('3');
+      const newUser = new UserFactory().make(userParams('3'));
       await expect(service.store(newUser)).resolves.toEqual(newUser);
     });
   });
@@ -58,7 +69,7 @@ describe('UserService', () => {
 
   describe('update', () => {
     it('should return a updated user with new data', async () => {
-      const modifiedUser = new UserFactory().make('3');
+      const modifiedUser = new UserFactory().make(userParams('3'));
       modifiedUser.name = 'Luke Skywalker';
       await expect(service.update('3', modifiedUser)).resolves.toEqual(
         modifiedUser,

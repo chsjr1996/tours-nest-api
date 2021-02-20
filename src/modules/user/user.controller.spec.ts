@@ -1,14 +1,25 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
-import { UserFactory } from 'src/database/factories/user.factory';
+import {
+  UserFactory,
+  UserParams,
+} from 'src/database/factories/user/user.factory';
 import { CreateUserDTO } from './dto/create.user.dto';
 import { UpdateUserDTO } from './dto/update.user.dto';
 
 describe('UserController', () => {
   let controller: UserController;
 
-  let mockUsers = [new UserFactory().make('1'), new UserFactory().make('2')];
+  const userParams = (id: string): UserParams => ({
+    id,
+    email: 'test@natours.com',
+    password: '12345678',
+  });
+  let mockUsers = [
+    new UserFactory().make(userParams('1')),
+    new UserFactory().make(userParams('2')),
+  ];
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -67,7 +78,7 @@ describe('UserController', () => {
     });
 
     it('should get created user', async () => {
-      const newUser = new UserFactory().make('3');
+      const newUser = new UserFactory().make(userParams('3'));
       await expect(controller.store(newUser)).resolves.toEqual(newUser);
     });
   });
@@ -104,12 +115,12 @@ describe('UserController', () => {
     });
 
     it('should get error if specified user not exists', () => {
-      const modifiedUser = new UserFactory().make('3');
+      const modifiedUser = new UserFactory().make(userParams('3'));
       expect(controller.update('4', modifiedUser)).rejects.toEqual(undefined);
     });
 
     it('should get modified user with correctly updated data', async () => {
-      mockUsers = [...mockUsers, new UserFactory().make('3')];
+      mockUsers = [...mockUsers, new UserFactory().make(userParams('3'))];
       mockUsers[2].name = 'Darth Vader';
       await expect(controller.update('3', mockUsers[2])).resolves.toEqual(
         mockUsers[2],

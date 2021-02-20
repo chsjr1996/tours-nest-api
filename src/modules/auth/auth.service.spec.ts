@@ -1,6 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { JwtModule, JwtService } from '@nestjs/jwt';
-import { UserFactory } from 'src/database/factories/user.factory';
+import {
+  UserFactory,
+  UserParams,
+} from 'src/database/factories/user/user.factory';
 import { AuthService } from './auth.service';
 import { PassportModule } from '@nestjs/passport';
 import { UserService } from '../user/user.service';
@@ -9,9 +12,12 @@ describe('UserService', () => {
   let service: AuthService;
   let jwtService: JwtService;
 
-  const testEmail = 'test@natours.com';
-  const testPassword = '12345678';
-  const mockUser = new UserFactory().make('1', testEmail, testPassword);
+  const userParams: UserParams = {
+    id: '1',
+    email: 'test@natours.com',
+    password: '12345678',
+  };
+  const mockUser = new UserFactory().make(userParams);
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -50,13 +56,13 @@ describe('UserService', () => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password, ...mockUserWithoutPassword } = mockUser;
       await expect(
-        service.validateUser(testEmail, testPassword),
+        service.validateUser(userParams.email, userParams.password),
       ).resolves.toEqual(mockUserWithoutPassword);
     });
 
     it('should return null if auth data is incorrect', async () => {
       await expect(
-        service.validateUser(testEmail, '12345679'),
+        service.validateUser(userParams.email, '12345679'),
       ).resolves.toBeNull();
     });
   });

@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { ReviewFactory } from 'src/database/factories/review.factory';
+import { ReviewFactory } from 'src/database/factories/review/review.factory';
 import { Repository } from 'typeorm';
 import { Review } from './review.model';
 import { ReviewService } from './review.service';
@@ -10,8 +10,8 @@ describe('ReviewService', () => {
   let repository: Repository<Review>;
 
   const reviewsMock = [
-    new ReviewFactory().make('1'),
-    new ReviewFactory().make('2'),
+    new ReviewFactory().make({ id: '1' }),
+    new ReviewFactory().make({ id: '2' }),
   ];
 
   beforeEach(async () => {
@@ -42,7 +42,7 @@ describe('ReviewService', () => {
 
   describe('store', () => {
     it('should return a created review', async () => {
-      const newReview = new ReviewFactory().make('3');
+      const newReview = new ReviewFactory().make({ id: '3' });
       await expect(service.store(newReview)).resolves.toEqual(newReview);
     });
   });
@@ -63,7 +63,7 @@ describe('ReviewService', () => {
 
   describe('update', () => {
     it('should return a updated user with new data', async () => {
-      const modifiedUser = new ReviewFactory().make('3');
+      const modifiedUser = new ReviewFactory().make({ id: '3' });
       modifiedUser.review = 'Very Cool!';
       await expect(service.update('3', modifiedUser)).resolves.toEqual(
         modifiedUser,

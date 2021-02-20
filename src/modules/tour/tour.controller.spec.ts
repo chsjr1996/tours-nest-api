@@ -1,12 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { TourFactory } from 'src/database/factories/tour.factory';
+import { TourFactory } from 'src/database/factories/tour/tour.factory';
 import { TourController } from './tour.controller';
 import { TourService } from './tour.service';
 
 describe('TourController', () => {
   let controller: TourController;
 
-  let mockTours = [new TourFactory().make('1'), new TourFactory().make('2')];
+  let mockTours = [
+    new TourFactory().make({ id: '1' }),
+    new TourFactory().make({ id: '2' }),
+  ];
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -63,7 +66,7 @@ describe('TourController', () => {
     });
 
     it('should get created tour', async () => {
-      const newTour = new TourFactory().make('3');
+      const newTour = new TourFactory().make({ id: '3' });
       await expect(controller.store(newTour)).resolves.toEqual(newTour);
     });
   });
@@ -100,12 +103,12 @@ describe('TourController', () => {
     });
 
     it('should get error if specified tour not exists', () => {
-      const modifiedTour = new TourFactory().make('3');
+      const modifiedTour = new TourFactory().make({ id: '3' });
       expect(controller.update('4', modifiedTour)).rejects.toEqual(undefined);
     });
 
     it('should get modified tour with correctly updated data', async () => {
-      mockTours = [...mockTours, new TourFactory().make('3')];
+      mockTours = [...mockTours, new TourFactory().make({ id: '3' })];
       mockTours[2].name = 'Darth Vader';
       await expect(controller.update('3', mockTours[2])).resolves.toEqual(
         mockTours[2],

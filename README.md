@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/chsjr1996/natours-nest-api.svg?branch=main)](https://travis-ci.com/chsjr1996/natours-nest-api) ![Coveralls github branch](https://img.shields.io/coveralls/github/chsjr1996/natours-nest-api/main) ![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/sourcevortex/natours-nest-api) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/sourcevortex/natours-nest-api) ![Doc](https://img.shields.io/badge/doc-swagger-%230E7FBF) ![License MIT](https://img.shields.io/github/license/chsjr1996/natours-nest-api)
+[![Build Status](https://travis-ci.com/chsjr1996/natours-nest-api.svg?branch=main)](https://travis-ci.com/chsjr1996/natours-nest-api) [![Coveralls github branch](https://img.shields.io/coveralls/github/chsjr1996/natours-nest-api/main)](https://coveralls.io/github/chsjr1996/natours-nest-api?branch=main) [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/sourcevortex/natours-nest-api)](https://hub.docker.com/r/sourcevortex/natours-nest-api) [![Doc](https://img.shields.io/badge/doc-swagger-%230E7FBF)](#api-documentation) [![License MIT](https://img.shields.io/github/license/chsjr1996/natours-nest-api)](https://github.com/chsjr1996/natours-nest-api/blob/main/LICENSE)
 
 ---
 
@@ -24,7 +24,7 @@ More is coming...
 - [Requirements](#requirements)
 - [Installation (development)](#installation-development)
 - [Deploy (production)](#deploy-production)
-  - [Ports](#ports)
+  - [Docker Ports](#docker-ports)
 - [Docker instructions](#docker-instructions)
   - [Docker tips](#docker-tips)
 - [API Documentation](#api-documentation)
@@ -95,7 +95,7 @@ In this case you need to have a running PostgreSQL instance and adjust the **.en
 
 - https://hub.docker.com/r/sourcevortex/natours-nest-api
 
-### Ports
+### Docker Ports
 
 - `3000` application
 - `5432` PostgreSQL

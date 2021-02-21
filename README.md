@@ -25,6 +25,7 @@ More is coming...
 - [Installation (development)](#installation-development)
 - [Deploy (production)](#deploy-production)
   - [Ports](#ports)
+- [Docker instructions](#docker-instructions)
   - [Docker tips](#docker-tips)
 - [API Documentation](#api-documentation)
 - [References](#references)
@@ -42,7 +43,7 @@ More is coming...
 - [ ] Redis cache layer
 - [ ] Web Socket
 - [ ] GraphQL
-- [ ] Get 100% code coverage
+- [x] Get (and keep) 100% code coverage
 - [ ] PostGIS (The challenge)
 
 ...
@@ -66,11 +67,14 @@ or
 - `git clone https://github.com/chsjr1996/natours-nest-api.git`
 - `npm install`
 - Create a copy of file `.env.example` with name `.env` and fill it
-- `npm run start:dev` **_for run and watch modifications_**
+- `npm run typeorm -- migration:run` - **_needed to create database tables_**
+- `npm run start:dev` - **_for run and watch modifications_**
 
 If you have docker and docker-compose, you can use this command:
 
 - `docker-compose up -d`
+
+**See [Docker instructions](#docker-instructions) section.**
 
 ---
 
@@ -97,11 +101,21 @@ In this case you need to have a running PostgreSQL instance and adjust the **.en
 - `5432` PostgreSQL
 - `8080` pgAdmin4
 
-### Docker tips
+---
+
+## Docker instructions
+
+If you are using docker then you need run `typeorm` inside of APP container using `exec` docker command, like this:
+
+- `docker exec -it natours-nest-api bash`
+- `npm run typeorm -- migration:run`
+
+### Docker Tips
 
 - `docker-compose down` Stop and destroy containers
 - `docker-compose stop` Only stop containers
 - `docker-compose start` Start stopped containers
+- `docker-compose restart` Restart all containers
 
 If you are using the production file (docker-compose.prod.yaml) then you need specify this after of `docker-compose`, e.g.:
 

@@ -9,13 +9,19 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { UserService } from './user.service';
 import { UserDTO } from './dto/user.dto';
 import { User } from './user.model';
 import { CreateUserDTO } from './dto/create.user.dto';
 import { UpdateUserDTO } from './dto/update.user.dto';
 
+@ApiBearerAuth()
 @ApiTags('user')
 @Controller('v1/user')
 export class UserController {

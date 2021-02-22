@@ -13,7 +13,7 @@ describe('UserController', () => {
 
   const userParams = (id: string): UserParams => ({
     id,
-    email: 'test@natours.com',
+    email: 'test@tours.com',
     password: '12345678',
   });
   let mockUsers = [

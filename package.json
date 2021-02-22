@@ -1,7 +1,7 @@
 {
-  "name": "natours-nest-api",
+  "name": "tours-api",
   "version": "0.1.0",
-  "description": "Natours (Tours) API built-in with Nest.JS",
+  "description": "Tours API built-in with Nest.JS",
   "author": "Carlos Henrique",
   "private": true,
   "license": "MIT",

@@ -14,7 +14,7 @@ describe('UserService', () => {
 
   const userParams: UserParams = {
     id: '1',
-    email: 'test@natours.com',
+    email: 'test@tours.com',
     password: '12345678',
   };
   const mockUser = new UserFactory().make(userParams);

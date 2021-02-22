@@ -29,13 +29,12 @@ More is coming...
   - [Docker tips](#docker-tips)
 - [API Documentation](#api-documentation)
 - [Related projects](#related-projects)
-  - [Natours Admin](#natours-admin)
-  - [Natours Mobile](#natours-mobile)
-  - [Natours Site](#natours-site)
+  - [Tours Admin](#tours-admin)
+  - [Tours Mobile](#tours-mobile)
+  - [Tours Site](#tours-site)
 - [References](#references)
 
-
-**[Back to the top](#natours-nestjs-api)**
+**[Back to the top](#tours-api)**
 
 ---
 
@@ -55,7 +54,7 @@ More is coming...
 
 ...
 
-**[Back to the top](#natours-nestjs-api)**
+**[Back to the top](#tours-api)**
 
 ---
 
@@ -69,7 +68,7 @@ or
 - Docker
 - docker-compose
 
-**[Back to the top](#natours-nestjs-api)**
+**[Back to the top](#tours-api)**
 
 ---
 
@@ -87,7 +86,7 @@ If you have docker and docker-compose, you can use this command:
 
 **See [Docker instructions](#docker-instructions) section.**
 
-**[Back to the top](#natours-nestjs-api)**
+**[Back to the top](#tours-api)**
 
 ---
 
@@ -114,7 +113,7 @@ In this case you need to have a running PostgreSQL instance and adjust the **.en
 - `5432` PostgreSQL
 - `8080` pgAdmin4
 
-**[Back to the top](#natours-nestjs-api)**
+**[Back to the top](#tours-api)**
 
 ---
 
@@ -136,7 +135,7 @@ If you are using the production file (docker-compose.prod.yaml) then you need sp
 
 - `docker-compose -f docker-compose.prod.yaml down`
 
-**[Back to the top](#natours-nestjs-api)**
+**[Back to the top](#tours-api)**
 
 ---
 
@@ -148,27 +147,27 @@ You can access the API Documentation in [http://localhost:3000/api](http://local
 
 1. The OAS (OpenAPI Specification) is a language-agnostic interface to RESTful. You can use the OAS output in Insomnia Designer, only copy `/api-json` result and paste in 'Design' tab.
 
-**[Back to the top](#natours-nestjs-api)**
+**[Back to the top](#tours-api)**
 
 ---
 
 ## Related projects
 
-### Natours Admin
+### Tours Admin
 
 The Admin panel to manage this API (e.g.: create tours, remover users, ...). This app is built with Angular (11), in SPA mode and follow best development practices.
 
-- [Repository link](https://github.com/chsjr1996/natours-admin)
+- [Repository link](https://github.com/chsjr1996/tours-admin)
 
-### Natours Mobile
+### Tours Mobile
 
 Flutter APP to user navigation (booking, register, pay, ...), coming soon...
 
-### Natours Site
+### Tours Site
 
 Site (Angular Universal SSR) to user navigation (booking, register, pay, ...), coming soon...
 
-**[Back to the top](#natours-nestjs-api)**
+**[Back to the top](#tours-api)**
 
 ---
 
@@ -186,7 +185,7 @@ This repository is based on some articles and videos. I used them as study objec
 
 1. This repository is inspired on udemy course [Node.js, Express, MongoDB & More: The Complete Bootcamp 2020](https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/), originally built with vanilla Javascript and MongoDB.
 
-**[Back to the top](#natours-nestjs-api)**
+**[Back to the top](#tours-api)**
 
 ---
 
@@ -194,4 +193,4 @@ This repository is based on some articles and videos. I used them as study objec
 
 If you see any error or want a new feature, please open a issue!
 
-**[Back to the top](#natours-nestjs-api)**
+**[Back to the top](#tours-api)**

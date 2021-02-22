@@ -3,12 +3,12 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 export default (app: INestApplication) => {
   const options = new DocumentBuilder()
-    .setTitle('Natours Nest API')
-    .setDescription('Natours API Documentation')
+    .setTitle('Tours API')
+    .setDescription('Tours API Documentation')
     .setVersion('0.1.0')
     .setLicense(
       'MIT',
-      'https://github.com/chsjr1996/natours-nest-api/blob/main/LICENSE',
+      'https://github.com/chsjr1996/tours-api/blob/main/LICENSE',
     )
     .addTag('auth', 'Auth endpoints to allow use API protected modules')
     .addTag('review', 'Review resource with data related with tours')

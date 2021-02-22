@@ -4,31 +4,31 @@ services:
   app:
     build: ./.docker/app
     entrypoint: ./.docker/entrypoint-dev.sh
-    container_name: natours-nest-api
+    container_name: tours-api
     ports:
       - 3000:3000
     volumes:
-      - .:/home/natours/app
+      - .:/home/tours/app
 
   db:
     build: .docker/postgres
-    container_name: natours-nest-db
+    container_name: tours-db
     restart: always
     tty: true
     volumes:
       - .docker/dbdata:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=admin
-      - POSTGRES_DB=natours_nest_api
+      - POSTGRES_DB=tours_api
     ports:
       - '5432:5432'
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: natours-nest-pgadmin
+    container_name: tours-pgadmin
     tty: true
     environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@natours.com
+      - PGADMIN_DEFAULT_EMAIL=admin@tours.com
       - PGADMIN_DEFAULT_PASSWORD=admin
     ports:
       - '8080:80'

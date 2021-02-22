@@ -1,14 +1,14 @@
-[![Build Status](https://travis-ci.com/chsjr1996/natours-nest-api.svg?branch=main)](https://travis-ci.com/chsjr1996/natours-nest-api) [![Coveralls github branch](https://img.shields.io/coveralls/github/chsjr1996/natours-nest-api/main)](https://coveralls.io/github/chsjr1996/natours-nest-api?branch=main) [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/sourcevortex/natours-nest-api)](https://hub.docker.com/r/sourcevortex/natours-nest-api) [![Doc](https://img.shields.io/badge/doc-swagger-%230E7FBF)](#api-documentation) [![License MIT](https://img.shields.io/github/license/chsjr1996/natours-nest-api)](https://github.com/chsjr1996/natours-nest-api/blob/main/LICENSE)
+[![Build Status](https://travis-ci.com/chsjr1996/tours-nest-api.svg?branch=main)](https://travis-ci.com/chsjr1996/tours-nest-api) [![Coveralls github branch](https://img.shields.io/coveralls/github/chsjr1996/tours-nest-api/main)](https://coveralls.io/github/chsjr1996/tours-nest-api?branch=main) [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/sourcevortex/tours-nest-api)](https://hub.docker.com/r/sourcevortex/tours-nest-api) [![Doc](https://img.shields.io/badge/doc-swagger-%230E7FBF)](#api-documentation) [![License MIT](https://img.shields.io/github/license/chsjr1996/tours-nest-api)](https://github.com/chsjr1996/tours-nest-api/blob/main/LICENSE)
 
 ---
 
-![Natours Logo](./natours-logo.png)
-
-<p align="center">Logo by <a href="https://github.com/jonasschmedtmann">Jonas Schmedtmann</a>.</p>
+<p align="center">
+  <img src="./logo.png" />
+</p>
 
 <br>
 
-# Natours NestJS API
+# Tours API
 
 ![Repository Banner](./repo-banner.png)
 
@@ -64,7 +64,7 @@ or
 
 ## Installation (development)
 
-- `git clone https://github.com/chsjr1996/natours-nest-api.git`
+- `git clone https://github.com/chsjr1996/tours-nest-api.git`
 - `npm install`
 - Create a copy of file `.env.example` with name `.env` and fill it
 - `npm run typeorm -- migration:run` - **_needed to create database tables_**
@@ -87,13 +87,13 @@ If you have docker and docker-compose, you can use this command:
 
 You can use docker hub image too:
 
-- `docker pull sourcevortex/natours-nest-api`
+- `docker pull sourcevortex/tours-nest-api`
 
 In this case you need to have a running PostgreSQL instance and adjust the **.env** file.
 
 **See more in:**
 
-- https://hub.docker.com/r/sourcevortex/natours-nest-api
+- https://hub.docker.com/r/sourcevortex/tours-nest-api
 
 ### Docker Ports
 
@@ -107,7 +107,7 @@ In this case you need to have a running PostgreSQL instance and adjust the **.en
 
 If you are using docker then you need run `typeorm` inside of APP container using `exec` docker command, like this:
 
-- `docker exec -it natours-nest-api bash`
+- `docker exec -it tours-nest-api bash`
 - `npm run typeorm -- migration:run`
 
 ### Docker Tips
@@ -145,7 +145,7 @@ This repository is based on some articles and videos. I used them as study objec
 
 > Notes
 
-1. This repository is based on udemy course [Node.js, Express, MongoDB & More: The Complete Bootcamp 2020](https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/), originally built with vanilla Javascript and MongoDB.
+1. This repository is inspired on udemy course [Node.js, Express, MongoDB & More: The Complete Bootcamp 2020](https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/), originally built with vanilla Javascript and MongoDB.
 
 ---
 

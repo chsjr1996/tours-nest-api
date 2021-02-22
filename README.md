@@ -28,6 +28,10 @@ More is coming...
 - [Docker instructions](#docker-instructions)
   - [Docker tips](#docker-tips)
 - [API Documentation](#api-documentation)
+- [Related projects](#related-projects)
+  - [Natours Admin](#natours-admin)
+  - [Natours Mobile](#natours-mobile)
+  - [Natours Site](#natours-site)
 - [References](#references)
 
 ---
@@ -130,6 +134,24 @@ You can access the API Documentation in [http://localhost:3000/api](http://local
 > Notes
 
 1. The OAS (OpenAPI Specification) is a language-agnostic interface to RESTful. You can use the OAS output in Insomnia Designer, only copy `/api-json` result and paste in 'Design' tab.
+
+---
+
+## Related projects
+
+### Natours Admin
+
+The Admin panel to manage this API (e.g.: create tours, remover users, ...). This app is built with Angular (11), in SPA mode and follow best development practices.
+
+- [Repository link](https://github.com/chsjr1996/natours-admin)
+
+### Natours Mobile
+
+Flutter APP to user navigation (booking, register, pay, ...), coming soon...
+
+### Natours Site
+
+Site (Angular Universal SSR) to user navigation (booking, register, pay, ...), coming soon...
 
 ---
 

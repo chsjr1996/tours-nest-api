@@ -8,10 +8,17 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { Public } from 'src/common/decorators/public/public.decorator';
 import { Tour } from './tour.model';
 import { TourService } from './tour.service';
+import { CreateTourDTO } from './dto/createTourDTO';
+import { TourDTO } from './dto/tourDTO';
 
 @ApiTags('tour')
 @Controller('v1/tour')
@@ -20,12 +27,14 @@ export class TourController {
 
   @ApiBearerAuth()
   @Post()
-  public async store(@Body() body: any): Promise<Tour> {
+  @ApiCreatedResponse({ type: TourDTO })
+  public async store(@Body() body: CreateTourDTO): Promise<Tour> {
     return this.tourService.store(body);
   }
 
   @Public()
   @Get()
+  @ApiResponse({ type: TourDTO })
   public async index(): Promise<Tour[]> {
     return this.tourService.getAll();
   }

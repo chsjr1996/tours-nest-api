@@ -101,7 +101,7 @@ export class CreateToursTable1613435640097 implements MigrationInterface {
       'tours',
       new TableForeignKey({
         columnNames: ['user_id'],
-        referencedTableName: 'tours',
+        referencedTableName: 'users',
         referencedColumnNames: ['id'],
       }),
     );
@@ -112,7 +112,7 @@ export class CreateToursTable1613435640097 implements MigrationInterface {
     const userIdFk = table.foreignKeys.find(
       (fk) => fk.columnNames.indexOf('user_id') !== -1,
     );
-    await queryRunner.dropForeignKey('reviews', userIdFk);
+    await queryRunner.dropForeignKey('tours', userIdFk);
     await queryRunner.dropTable('tours');
   }
 }
